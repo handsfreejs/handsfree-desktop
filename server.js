@@ -1,5 +1,5 @@
 const WebSocket = require('ws')
-const wss = new WebSocket.Server({ port: 8080 })
+const wss = new WebSocket.Server({ port: 8081 })
 const robot = require('robotjs')
 
 wss.on('connection', (ws) => {
@@ -8,6 +8,10 @@ wss.on('connection', (ws) => {
 
     if (message.status === 'moveMouse') {
       robot.moveMouse(message.x, message.y)
+    }
+
+    if (message.status === 'mouseClick') {
+      robot.mouseClick()
     }
   })
 })
